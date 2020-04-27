@@ -1,0 +1,8 @@
+Incubation period: 6.55
+R0 - basic reproduction rate: 3.26
+Time from hospitalization to death: 10
+Recovery time: 21.02
+Reporting rate: 0.75
+Critical death rate - without hospitalization: 0.122
+Probability of an infected case but asymptomatic: 0.179
+

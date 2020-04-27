@@ -1,0 +1,27 @@
+\documentclass{article}
+\usepackage{physics}
+\usepackage{amsmath}
+\begin{document}
+	\section{Introduction}
+	We're mainly approaching our models from the fact that the COVID-19 disesase can regenerate. Right now we're not looking into other models as there is enough content already but we've found out that the models considering scuceptibility post infection are not being taken into account as of now. We've come up with following models about four models:
+	\begin{itemize}
+		\item SISD
+		\item SIXD
+		\item SEIRS
+		\item SEIR
+	\end{itemize}
+	\section{SIDS}
+	\begin{equation*}
+		\dv{s}{t} = -\beta si + \alpha i
+	\end{equation*}
+	\begin{equation*}
+		\dv{i}{t} = \beta si - \alpha i - \gamma i
+	\end{equation*}
+	\begin{equation*}
+		\dv{d}{t} = \gamma i
+	\end{equation*}
+	where $\gamma$ represents mortality rate, $\beta$ represents transmission rate and $\alpha$ represents rate of true recovery (not dying).
+
+
+	\section{SIXD}
+\end{document}
