@@ -16,16 +16,21 @@ def base_sisd_model(init_vals, params, t):
     return np.stack([S, I, D]).T
 
 # Define parameters
-t_max = 100
+t_max = 30
 dt = .1
 t = np.linspace(0, t_max, int(t_max/dt) + 1)
 N = 10000
 init_vals = 1 - 1/N, 1/N, 0
-alpha = 0.2
-beta = 1.75
-gamma = 0.02
+mortality_rate = 0.02
+# the recovery rate includes death and actual recovery
+recovery_rate = 0.2
+gamma = mortality_rate * recovery_rate
+alpha = recovery_rate - gamma
+beta = 2
+
 params = alpha, beta, gamma
 # Run simulation
 results = base_sisd_model(init_vals, params, t)
-plt.plot(results)
+grph = plt.plot(results)
+plt.legend(grph, ('Susceptible', 'Infectious', 'Deaths'))
 plt.show()
