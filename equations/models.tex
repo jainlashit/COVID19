@@ -3,14 +3,13 @@
 \usepackage{amsmath}
 \begin{document}
 	\section{Introduction}
-	We're mainly approaching our models from the fact that the COVID-19 disesase can regenerate. Right now we're not looking into other models as there is enough content already but we've found out that the models considering scuceptibility post infection are not being taken into account as of now. We've come up with following models about four models:
+	Most of the modelling associated with the COVID-19 is based on SIR, SEIR models and their extensions. There has been lots of incidents which point out that the virus can \textit{reoccur}. In this report we present our models which are primararily based on SIS model and take into account the \textit{reoccurence} of the disease. Following are the models we'll be explaining in this report: 
 	\begin{itemize}
-		\item SISD
-		\item SIXD
-		\item SEIRS
-		\item SEIR
+		\item \textbf{SISD} Susceptible, Infectious, Susceptible, Dead
+		\item \textbf{SIXD} Susceptible, Infectious, Ex-infected, Dead
 	\end{itemize}
-	\section{SIDS}
+	
+	\section{SISD}
 	\begin{equation*}
 		\dv{s}{t} = -\beta si + \alpha i
 	\end{equation*}
@@ -24,4 +23,50 @@
 
 
 	\section{SIXD}
+	The above model assumed that the infected patient will start behaving like the susceptible person again. However that should not be the case since there have been several reports stating that we develop antibodies against the virus. Even though antibodies develop, we're not sure about their effectiveness as there has been reports of \textit{re-occurence} of the virus in the treated patients. We're not sure how this reoccurence occurs. However, it can mainly occur due to two factors:
+	\begin{itemize}
+		\item \textbf{Re-infection:} The patients that have recovered are catching the infection again. WHO has warned not to rule out this possibility but we do not have any strong evidence that this is the case. Also, we do not have any idea about the behaviour of re-infection and hence we do not model it in this current report.
+		\item \textbf{Re-activation:} The virus is re-activating in patients after they have recovered. There has been evidence for this behaviour and it is being assumed it can occur due to one of the two reasons:
+		\begin{itemize}
+		\item The virus lies in dormant state in the body and is reactivated again.
+		\item The testing kits are not very accurate.
+		\end{itemize}
+		We chose to model the first scenario but we will ignore the case of recovered patients being re-infected again as we don't have enough evidence to map it's behaviour.
+	\end{itemize}
+
+	\subsection{Reactivation Case: Dormant virus}
+	\begin{equation*}
+		\dv{s}{t} = -\beta si
+	\end{equation*}
+	\begin{equation*}
+		\dv{i}{t} = \beta si - \alpha i - \gamma i + \theta x
+	\end{equation*}
+	\begin{equation*}
+		\dv{d}{t} = \gamma i
+	\end{equation*}
+	\begin{equation*}
+		\dv{x}{t} = \alpha i -\theta x
+	\end{equation*}
+	where $\gamma$ represents mortality rate, $\beta$ represents transmission rate, $\alpha$ represents rate of true recovery (not dying) and $\theta$ represents reactivation rate.
+
+	\subsection{Calculating reactivation rate}
+	We've obtained data from Korean CDC for three dates.
+	\begin{center}
+		\begin{tabular}{ |c|c|c|c|c| } 
+		 \hline
+		  & Recovered & Reactivated & Ratio & Normalised (per 1000) \\ 
+		 \hline
+		 09/04/2020 & 6973 & 91 & 0.013 & 13 \\ 
+		 \hline
+		 12/04/2020 & 7368 & 116 & 0.016 & 16\\ 
+		 \hline
+		 26/04/2020 & 8764 & 222 & 0.025 & 25\\
+		 \hline
+		\end{tabular}
+	\end{center}
+
+	We can calculate $\theta$ by taking the average of the mutual slopes of three points above:
+	\begin{equation*}
+		\theta = \frac{\frac{16-13}{12-9} + \frac{25-16}{26-12} + \frac{25-13}{26-3}}{3*1000} = 0.00085
+	\end{equation*}
 \end{document}
