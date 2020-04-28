@@ -25,7 +25,7 @@ def base_sisd_model(init_vals, params, t):
     return np.stack([S, I, D]).T
 
 # Define parameters
-t_max = 1000
+t_max = 100
 dt = .1
 t = np.linspace(0, t_max, int(t_max/dt) + 1)
 N = 10000
@@ -55,6 +55,6 @@ ax.yaxis.set_major_formatter(y_formatter)
 plt.xlabel('Number of days')
 plt.ylabel('Percentage of Population')
 
-plt.title('Social Distancing ' + str((1-rho)*100) + '%')
-plt.legend(grph, ('Susceptible', 'Infectious', 'Ex-infectious'))
+plt.title('Social Distancing ' + str(round((1-rho)*100)) + '%')
+plt.legend(grph, ('Susceptible', 'Infectious', 'Death'))
 plt.show()

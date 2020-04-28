@@ -54,5 +54,5 @@ ax.yaxis.set_major_formatter(y_formatter)
 plt.xlabel('Number of days')
 plt.ylabel('Percentage of Population')
 
-plt.legend(grph, ('Susceptible', 'Infectious', 'Ex-infectious'))
+plt.legend(grph, ('Susceptible', 'Infectious', 'Death'))
 plt.show()
