@@ -7,16 +7,16 @@ def base_sisd_model(init_vals, params, t):
     alpha, beta, gamma, rho = params
     dt = t[1] - t[0]
     for _ in t[1:]:
-        s = s + (alpha*i - rho*beta*s*i)*dt
-        i = i + (rho*beta*s*i - alpha*i - gamma*i)*dt
-        d = d + (gamma*i)*dt
+        s += (alpha*I[-1] - rho*beta*S[-1]*I[-1])*dt
+        i += (rho*beta*S[-1]*I[-1] - alpha*I[-1] - gamma*I[-1])*dt
+        d += (gamma*I[-1])*dt
         S.append(s)
         I.append(i)
         D.append(d)
     return np.stack([S, I, D]).T
 
 # Define parameters
-t_max = 100
+t_max = 1000
 dt = .1
 t = np.linspace(0, t_max, int(t_max/dt) + 1)
 N = 10000

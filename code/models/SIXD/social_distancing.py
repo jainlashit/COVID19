@@ -7,10 +7,10 @@ def base_sixd_model(init_vals, params, t):
     alpha, beta, gamma, theta, rho = params
     dt = t[1] - t[0]
     for _ in t[1:]:
-        s += -(rho*beta*s*i)*dt
-        i += (rho*beta*s*i - alpha*i - gamma*i + theta*x)*dt
-        x += (alpha*i - theta*x)*dt
-        d += (gamma*i)*dt
+        s += -(rho*beta*S[-1]*I[-1])*dt
+        i += (rho*beta*S[-1]*I[-1] - alpha*I[-1] - gamma*I[-1] + theta*X[-1])*dt
+        x += (alpha*I[-1] - theta*X[-1])*dt
+        d += (gamma*I[-1])*dt
         S.append(s)
         I.append(i)
         X.append(x)
@@ -18,7 +18,7 @@ def base_sixd_model(init_vals, params, t):
     return np.stack([S, I, X, D]).T
 
 # Define parameters
-t_max = 1000
+t_max = 100
 dt = .1
 t = np.linspace(0, t_max, int(t_max/dt) + 1)
 N = 10000
