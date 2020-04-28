@@ -1,5 +1,14 @@
 import numpy as np
 from matplotlib import pyplot as plt
+from matplotlib.ticker import FuncFormatter
+
+
+def xscale(x, pos):
+    return int(x/10)
+
+def yscale(y, pos):
+    return int(y*100)
+
 
 def base_sisd_model(init_vals, params, t):
     s, i, d = init_vals
@@ -31,8 +40,21 @@ alpha = recovery_rate - gamma
 beta = 2
 
 params = alpha, beta, gamma, rho
-# Run simulation
 results = base_sisd_model(init_vals, params, t)
-grph = plt.plot(results)
-plt.legend(grph, ('Susceptible', 'Infectious', 'Deaths'))
+
+# Simulate
+fig, ax = plt.subplots()
+grph = ax.plot(results)
+
+x_formatter = FuncFormatter(xscale)
+y_formatter = FuncFormatter(yscale)
+
+ax.xaxis.set_major_formatter(x_formatter)
+ax.yaxis.set_major_formatter(y_formatter)
+
+plt.xlabel('Number of days')
+plt.ylabel('Percentage of Population')
+
+plt.title('Social Distancing ' + str((1-rho)*100) + '%')
+plt.legend(grph, ('Susceptible', 'Infectious', 'Ex-infectious'))
 plt.show()
