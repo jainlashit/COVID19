@@ -34,14 +34,14 @@ N = 10000
 init_vals = 1 - 1/N, 1/N, 0, 0
 mortality_rate = 0.02
 # the recovery rate includes death and actual recovery
-recovery_rate = 0.1
+recovery_rate = 0.05
 # this is social distancing parameter
 rho = 0.2
 # this is the reactivation parameter
 theta = 0.00085
 gamma = mortality_rate * recovery_rate
 alpha = recovery_rate - gamma
-beta = 0.5
+beta = 0.2
 
 params = alpha, beta, gamma, theta, rho
 results = base_sixd_model(init_vals, params, t)
