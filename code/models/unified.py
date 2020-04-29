@@ -79,7 +79,7 @@ mortality_rate = 0.02
 # the recovery rate includes death and actual recovery
 recovery_rate = 0.2
 # this is social distancing parameter
-rho = 1
+rho = 0.4
 # this is the reactivation parameter
 theta = 0.00085
 gamma = mortality_rate * recovery_rate
@@ -110,7 +110,7 @@ for ax in axs:
     ax.yaxis.set_major_formatter(y_formatter)
     
     ax.set_xlabel('Number of days')
-    ax.set_xlabel('Percentage of Population')
+    ax.set_ylabel('Percentage of Population')
 
 axs[0].legend(grph_sir, ('Susceptible', 'Infectious', 'Recovered'))
 # axs[0].legend(grph_seir, ('Susceptible', 'Exposed', 'Infectious', 'Recovered'))
