@@ -12,11 +12,11 @@ def yscale(y, pos):
 def base_sir_model(init_vals, params, t):
     s, i, r = init_vals
     S, I, R = [s], [i], [r]
-    alpha, beta, gamma, rho = params
+    beta, gamma, rho = params
     dt = t[1] - t[0]
     for _ in t[1:]:
-        s += (alpha*I[-1] - rho*beta*S[-1]*I[-1])*dt
-        i += (rho*beta*S[-1]*I[-1] - gamma*I[-1] - alpha*I[-1])*dt
+        s += (-rho*beta*S[-1]*I[-1])*dt
+        i += (rho*beta*S[-1]*I[-1] - gamma*I[-1])*dt
         r += (gamma*I[-1])*dt
         S.append(s)
         I.append(i)
@@ -77,17 +77,17 @@ N = 10000
 init_vals = 1 - 1/N, 1/N, 0, 0
 mortality_rate = 0.02
 # the recovery rate includes death and actual recovery
-recovery_rate = 0.2
+recovery_rate = 0.1
 # this is social distancing parameter
-rho = 0.4
+rho = 0.2
 # this is the reactivation parameter
 theta = 0.00085
 gamma = mortality_rate * recovery_rate
 alpha = recovery_rate - gamma
-beta = 2
+beta = 0.5
 
 params = alpha, beta, gamma, theta, rho
-results_sir = base_sir_model(init_vals[:-1], (recovery_rate, beta, 0.5, rho), t)
+results_sir = base_sir_model(init_vals[:-1], (beta, recovery_rate, rho), t)
 results_seir = base_seir_model(init_vals, (recovery_rate, beta, 0.5, rho), t)
 results_sisd = base_sisd_model(init_vals[:-1], (alpha, beta, gamma, rho), t)
 results_sixd = base_sixd_model(init_vals, (alpha, beta, gamma, theta, rho), t)

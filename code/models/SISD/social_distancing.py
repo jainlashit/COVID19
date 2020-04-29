@@ -32,12 +32,12 @@ N = 10000
 init_vals = 1 - 1/N, 1/N, 0
 mortality_rate = 0.02
 # the recovery rate includes death and actual recovery
-recovery_rate = 0.2
+recovery_rate = 0.1
 # this is social distancing parameter
 rho = 0.2
 gamma = mortality_rate * recovery_rate
 alpha = recovery_rate - gamma
-beta = 2
+beta = 0.5
 
 params = alpha, beta, gamma, rho
 results = base_sisd_model(init_vals, params, t)
