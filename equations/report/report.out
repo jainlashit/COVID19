@@ -1,0 +1,19 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Background}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{Transmission of COVID-19}{section.1}% 3
+\BOOKMARK [2][-]{subsection.1.3}{Epidemiological models}{section.1}% 4
+\BOOKMARK [2][-]{subsection.1.4}{Motivation}{section.1}% 5
+\BOOKMARK [1][-]{section.2}{SISD}{}% 6
+\BOOKMARK [1][-]{section.3}{SIXD}{}% 7
+\BOOKMARK [2][-]{subsection.3.1}{Reactivation Case: Dormant virus}{section.3}% 8
+\BOOKMARK [1][-]{section.4}{Method}{}% 9
+\BOOKMARK [2][-]{subsection.4.1}{Parameters}{section.4}% 10
+\BOOKMARK [2][-]{subsection.4.2}{Social Distancing}{section.4}% 11
+\BOOKMARK [2][-]{subsection.4.3}{Software}{section.4}% 12
+\BOOKMARK [1][-]{section.5}{Results}{}% 13
+\BOOKMARK [2][-]{subsection.5.1}{SISD}{section.5}% 14
+\BOOKMARK [2][-]{subsection.5.2}{SIXD}{section.5}% 15
+\BOOKMARK [2][-]{subsection.5.3}{Comparision with SIR}{section.5}% 16
+\BOOKMARK [1][-]{section.6}{Observations}{}% 17
+\BOOKMARK [1][-]{section.7}{Contribution}{}% 18
+\BOOKMARK [1][-]{section.8}{References}{}% 19

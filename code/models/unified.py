@@ -79,7 +79,7 @@ mortality_rate = 0.02
 # the recovery rate includes death and actual recovery
 recovery_rate = 0.05
 # this is social distancing parameter
-rho = 0.6
+rho = 1
 # this is the reactivation parameter
 theta = 0.00085
 gamma = mortality_rate * recovery_rate

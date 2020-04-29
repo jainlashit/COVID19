@@ -27,7 +27,7 @@ def base_sixd_model(init_vals, params, t):
     return np.stack([S, I, X, D]).T
 
 # Define parameters
-t_max = 100
+t_max = 150
 dt = .1
 t = np.linspace(0, t_max, int(t_max/dt) + 1)
 N = 10000
@@ -36,7 +36,7 @@ mortality_rate = 0.02
 # the recovery rate includes death and actual recovery
 recovery_rate = 0.05
 # this is social distancing parameter
-rho = 0.2
+rho = 0.8
 # this is the reactivation parameter
 theta = 0.00085
 gamma = mortality_rate * recovery_rate
